@@ -1,10 +1,11 @@
 ﻿using QuickBuy.Dominio.ObjetoValor;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace QuickBuy.Dominio.Entidades
 {
-    class Pedido
+    public class Pedido : Entidade
     {
         public int IdPed { get; set; }
         public int UsrID { get; set; }
@@ -20,5 +21,31 @@ namespace QuickBuy.Dominio.Entidades
         public FormaPagto FormaPagto { get; set; }
 
         public ICollection<ItemPedido> ItemPedidos { get; set; }
+
+        public override void Validate()
+        {
+            LimpaMsgValidacao();
+
+            if (!ItemPedidos.Any())
+                AdicMsg("Não existem itens no pedido!");
+
+            if (string.IsNullOrEmpty(strCEP))
+                AdicMsg("Informe o CEP!");
+
+            if (string.IsNullOrEmpty(strCidade))
+                AdicMsg("Informe a Cidade!");
+
+            if (string.IsNullOrEmpty(strUF))
+                AdicMsg("Informe a UF!");
+
+            if (string.IsNullOrEmpty(strEnd))
+                AdicMsg("Informe o endereço!");
+
+            if (intNumEnd == 0)
+                AdicMsg("Informe o número endereço!");
+
+            if (PagtoID == 0)
+                AdicMsg("Informe o número endereço!");
+        }
     }
 }

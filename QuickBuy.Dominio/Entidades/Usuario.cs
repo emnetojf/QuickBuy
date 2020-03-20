@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace QuickBuy.Dominio.Entidades
 {
-    class Usuario
+    public class Usuario : Entidade
     {
         public int IdUsr { get; set; }
         public string strEmail { get; set; }
@@ -11,5 +12,22 @@ namespace QuickBuy.Dominio.Entidades
         public string strSobrenome { get; set; }
 
         public ICollection<Pedido> Pedidos { get; set; }
+
+        public override void Validate()
+        {
+            LimpaMsgValidacao();
+
+            if (string.IsNullOrEmpty(strEmail))
+                AdicMsg("Informe o email!");
+
+            if (string.IsNullOrEmpty(strSenha))
+                AdicMsg("Informe a Senha!");
+
+            if (string.IsNullOrEmpty(strNome))
+                AdicMsg("Informe o Nome!");
+
+            if (string.IsNullOrEmpty(strSobrenome))
+                AdicMsg("Informe o Sobrenome!");
+        }
     }
 }
