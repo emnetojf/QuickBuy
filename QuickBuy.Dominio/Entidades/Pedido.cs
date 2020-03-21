@@ -8,7 +8,10 @@ namespace QuickBuy.Dominio.Entidades
     public class Pedido : Entidade
     {
         public int IdPed { get; set; }
-        public int UsrID { get; set; }
+        
+        public int UsuarioID { get; set; }
+        public virtual Usuario Usuario { get; set; }
+
         public DateTime dtPedido { get; set; }
         public DateTime dtEntrega { get; set; }
         public string strCEP { get; set; }
@@ -18,7 +21,7 @@ namespace QuickBuy.Dominio.Entidades
         public int intNumEnd { get; set; }
 
         public int PagtoID { get; set; }
-        public FormaPagto FormaPagto { get; set; }
+        public FormaPagto Pagto { get; set; }
 
         public ICollection<ItemPedido> ItemPedidos { get; set; }
 
