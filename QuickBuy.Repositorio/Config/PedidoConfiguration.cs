@@ -14,13 +14,13 @@ namespace QuickBuy.Repositorio.Config
             // Builder utiliza padrão fluent
             builder.Property(ped => ped.UsuarioID).IsRequired();
             builder.Property(ped => ped.PagtoID).IsRequired();
-            builder.Property(ped => ped.strCEP).IsRequired().HasMaxLength(10).HasColumnType("nvarchar");
-            builder.Property(ped => ped.strCidade).IsRequired().HasMaxLength(30).HasColumnType("nvarchar");
-            builder.Property(ped => ped.strEnd).IsRequired().HasMaxLength(50).HasColumnType("nvarchar");
+            builder.Property(ped => ped.strCEP).IsRequired().HasMaxLength(10);
+            builder.Property(ped => ped.strCidade).IsRequired().HasMaxLength(30);
+            builder.Property(ped => ped.strEnd).IsRequired().HasMaxLength(50);
             builder.Property(ped => ped.strUF).IsRequired().HasMaxLength(5);
             builder.Property(ped => ped.intNumEnd).IsRequired();
-            builder.Property(ped => ped.dtPedido).IsRequired().HasColumnType("datetime");
-            builder.Property(ped => ped.dtEntrega).IsRequired().HasColumnType("datetime");
+            builder.Property(ped => ped.dtPedido).IsRequired();
+            builder.Property(ped => ped.dtEntrega).IsRequired();
 
           
         }

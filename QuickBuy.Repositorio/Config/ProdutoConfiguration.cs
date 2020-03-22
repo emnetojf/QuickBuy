@@ -12,9 +12,9 @@ namespace QuickBuy.Repositorio.Config
             builder.HasKey(prod => prod.IdProd);
 
             // Builder utiliza padrão fluent
-            builder.Property(prod => prod.strDescricao).IsRequired().HasMaxLength(400).HasColumnType("nvarchar");
-            builder.Property(prod => prod.strNome).IsRequired().HasMaxLength(50).HasColumnType("nvarchar");
-            builder.Property(prod => prod.decPreco).IsRequired().HasColumnType("decimal(6,2)");          
+            builder.Property(prod => prod.strDescricao).IsRequired().HasMaxLength(400);
+            builder.Property(prod => prod.strNome).IsRequired().HasMaxLength(50);
+            builder.Property(prod => prod.decPreco).IsRequired();          
         }
     }
 }
