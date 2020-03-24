@@ -14,7 +14,7 @@ export class rotas implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    var autenticado = localStorage.getItem("usuario-autenticado");
+    var autenticado = sessionStorage.getItem("usuario-autenticado");
 
     //Usuario Autenticado
     if (autenticado == "1") {
