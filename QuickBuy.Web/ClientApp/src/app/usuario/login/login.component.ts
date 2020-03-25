@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
    
   public usuario;
   public returnUrl: string;
-  public mesgErro: string
+  public mesgErro: string;
+  public ativar_spinner: boolean;
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute, private usuarioServico: UsuarioServico) {
     this.usuario = new Usuario();    
@@ -26,12 +27,16 @@ export class LoginComponent implements OnInit {
   
   entrar() {
 
+    this.ativar_spinner = true;
+
     this.usuarioServico.verificarUsuario(this.usuario).subscribe(
-      data => {
-        var usuarioRetorno: Usuario;
-        usuarioRetorno = data;
-        sessionStorage.setItem("usuario-autenticado", "1");
-        sessionStorage.setItem("email-usuario", usuarioRetorno.strEmail);
+      //data => {
+        //var usuarioRetorno: Usuario;
+        //usuarioRetorno = data;
+        //sessionStorage.setItem("usuario-autenticado", "1");
+        //sessionStorage.setItem("email-usuario", usuarioRetorno.strEmail);
+      usuario_json => {
+        this.usuarioServico.usuario = usuario_json;
 
         if (this.returnUrl == null) {
           this.router.navigate(['/']);
@@ -43,6 +48,7 @@ export class LoginComponent implements OnInit {
       err => {
         console.log(err.error);
         this.mesgErro = err.error;
+        this.ativar_spinner = false;
       }
     );
   }  

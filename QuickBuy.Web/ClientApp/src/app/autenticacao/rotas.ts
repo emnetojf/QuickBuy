@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
-import { ProdutoComponent } from "../produtos/produto.component";
+//import { ProdutoComponent } from "../produtos/produto.component";
+import { UsuarioServico } from "../servicos/usuario/usuario.servico";
 
 
 @Injectable({
@@ -9,15 +10,14 @@ import { ProdutoComponent } from "../produtos/produto.component";
 
 export class rotas implements CanActivate {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private usuarioServico: UsuarioServico) {
 
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    var autenticado = sessionStorage.getItem("usuario-autenticado");
 
     //Usuario Autenticado
-    if (autenticado == "1") {
+    if (this.usuarioServico.usuario_autenticado()) {
       return true;
     }
 

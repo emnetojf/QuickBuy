@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using QuickBuy.Dominio.Contratos;
 using QuickBuy.Dominio.Entidades;
 using System;
 
@@ -7,6 +8,13 @@ namespace QuickBuy.Web.Controllers
     [Route("api/[Controller]")]
     public class UsuarioController : Controller
     {
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
+
+        public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
+        {
+            _usuarioRepositorio = usuarioRepositorio;
+        }
+
         [HttpGet]
         public ActionResult Get()
         {
@@ -39,7 +47,9 @@ namespace QuickBuy.Web.Controllers
         {
             try
             {
-                if (usuario.strEmail == "email@email.com" && usuario.strSenha == "123")
+                var usuarioRetorno = _usuarioRepositorio.Obter(usuario.strEmail, usuario.strSenha);
+
+                if (usuarioRetorno != null)
                 {
                     return Ok(usuario);
                 }
