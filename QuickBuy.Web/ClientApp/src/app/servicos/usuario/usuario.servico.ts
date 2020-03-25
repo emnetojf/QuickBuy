@@ -1,4 +1,4 @@
-import { Injectable, inject } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Usuario } from "../../modelo/usuario";
@@ -11,7 +11,7 @@ import { Usuario } from "../../modelo/usuario";
 export class UsuarioServico {
 
   private baseURL: string;
-  
+
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.baseURL = baseUrl;
   }
@@ -21,10 +21,10 @@ export class UsuarioServico {
     const headers = new HttpHeaders().set('content-type', 'application/json');
 
     var body = {
-      email: usuario.strEmail,
-      senha: usuario.strSenha
+      strEmail: usuario.strEmail,
+      strSenha: usuario.strSenha
     }
 
-    this.http.post<Usuario>(this.baseURL + "api/usuario", body, { headers });
+    return this.http.post<Usuario>(this.baseURL + "api/usuario/VerificarUsuario", body, { headers });
   }
 }

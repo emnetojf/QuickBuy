@@ -13,8 +13,8 @@ import { error } from "protractor";
 export class LoginComponent implements OnInit {
    
   public usuario;
-  public returnUrl: string; 
-  
+  public returnUrl: string;
+  public mesgErro: string
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute, private usuarioServico: UsuarioServico) {
     this.usuario = new Usuario();    
@@ -28,17 +28,22 @@ export class LoginComponent implements OnInit {
 
     this.usuarioServico.verificarUsuario(this.usuario).subscribe(
       data => {
+        var usuarioRetorno: Usuario;
+        usuarioRetorno = data;
+        sessionStorage.setItem("usuario-autenticado", "1");
+        sessionStorage.setItem("email-usuario", usuarioRetorno.strEmail);
 
+        if (this.returnUrl == null) {
+          this.router.navigate(['/']);
+        } else {
+          this.router.navigate([this.returnUrl]);
+        }
+        
       },
       err => {
-
+        console.log(err.error);
+        this.mesgErro = err.error;
       }
     );
-
-    //if (this.usuario.strEmail == "email@email.com" && this.usuario.strSenha == "123") {
-    //  sessionStorage.setItem("usuario-autenticado", "1");
-    //  this.router.navigate([this.returnUrl]);
-    //}
-
   }  
 }
