@@ -1,0 +1,67 @@
+<h1 class="h4" titulo >Cadastro do Produto</h1>
+
+<!--{
+              'is-invalid': nome.invalid && (nome.dirty || nome.touched),
+              'is-valid': nome.valid && (nome.dirty || nome.touched)
+           }-->
+<!-- nome -->
+<label for="inputNome" class="sr-only">Nome</label>
+<input type="text" name="nomeProduto" id="inputNome" placeholder="Informe o nome do produto"
+       class="mb-2 col-md-4 form-control"
+       [ngClass]=""
+       [(ngModel)]="produto.strNome"
+       #nome="ngModel"
+       required />
+<div class="invalid-feedback mb-2" *ngIf="nome.invalid && (nome.dirty || nome.touched)" role="alert">
+  <div *ngIf="nome.errors.required">
+    Nome deve ser preenchido!
+  </div>
+</div>
+
+
+<!-- descrição -->
+<label for="inputDescricao" class="sr-only">Descrição</label>
+<input type="text" name="descricaoProduto" id="inputDescricao" placeholder="Informe a descrição do produto"
+       class="mb-2 col-md-4 form-control"
+       [ngClass]=""
+       [(ngModel)] = "produto.strDescricao"
+       #descricao = "ngModel"
+       required />
+<div class="invalid-feedback mb-2" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)" role="alert">
+  <div *ngIf="descricao.errors.required">
+    Descrição deve ser preenchido!
+  </div>
+</div>
+
+
+<!-- preço -->
+<label for="inputPreco" class="sr-only">Preço do Produto</label>
+<input type="text" name="precoProduto" id="inputPreco" placeholder="Informe o preço do produto"
+       class="mb-2 col-md-4 form-control"
+       [ngClass]=""
+       [(ngModel)]="produto.decPreco"
+       #preco="ngModel"
+       required />
+<div class="invalid-feedback mb-2" *ngIf="preco.invalid && (preco.dirty || preco.touched)" role="alert">
+  <div *ngIf="preco.errors.required">
+    Preço deve ser preenchido!
+  </div>
+</div>
+
+
+<!-- foto -->
+<div class="input-group mb-2">
+  <div class="custom-file col-md-4">
+
+    <input type="file" id="inputFile" class="custom-file-input" />
+    <label for="inputFile" class="custom-file-label">Escolha a foto do Produto</label>
+
+  </div>
+</div>
+
+<button class="btn btn-primary btn-block mb-3 col-md-4" type="submit" (click)=cadastrar() [disabled]="ativar_spinner">
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+  Cadastrar
+</button>
+
+<div><a [routerLink]='["/"]'>Voltar</a></div>
