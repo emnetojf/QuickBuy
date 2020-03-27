@@ -6,6 +6,7 @@
         public string strNome { get; set; }
         public string strDescricao { get; set; }
         public decimal decPreco { get; set; }
+        public string strNomeArq { get; set; }
 
         public override void Validate()
         {

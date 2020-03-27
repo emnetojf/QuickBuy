@@ -25,7 +25,7 @@ export class UsuarioServico {
   }
 
   public usuario_autenticado(): boolean {
-    return this._usuario != null && this._usuario.strEmail != "" && this._usuario.strSenha != ""
+    return this._usuario != null && this._usuario.strEmail != "" && this._usuario.strSenha != "";
   }
 
   public limpar_sessao() {

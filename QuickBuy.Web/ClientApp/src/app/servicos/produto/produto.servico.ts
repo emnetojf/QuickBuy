@@ -10,6 +10,7 @@ import { Produto } from "../../modelo/produto";
 })
 
 export class ProdutoServico implements OnInit {
+   
     
   private baseURL: string;
   public produtos: Produto[];
@@ -25,6 +26,14 @@ export class ProdutoServico implements OnInit {
   get headers(): HttpHeaders {
     return new HttpHeaders().set('content-type', 'application/json');
   }
+
+  public enviarArq(arqSelecionado: File): Observable<string> {
+    const formData: FormData = new FormData();
+    formData.append("arqEnviado", arqSelecionado, arqSelecionado.name);
+
+    return this.http.post<string>(this.baseURL + "api/produto/enviarArq", formData);
+  }
+
 
   public cadastrarProduto(produto: Produto): Observable<Produto> {
     return this.http.post<Produto>(this.baseURL + "api/produto/cadastrar", JSON.stringify(produto), { headers: this.headers });

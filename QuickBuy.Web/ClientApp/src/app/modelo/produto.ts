@@ -3,4 +3,5 @@ export class Produto {
   strNome: string;
   strDescricao: string;
   decPreco: number;
+  strNomeArq: string;
 }

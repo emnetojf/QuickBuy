@@ -53,7 +53,7 @@
 <div class="input-group mb-2">
   <div class="custom-file col-md-4">
 
-    <input type="file" id="inputFile" class="custom-file-input" />
+    <input type="file" id="inputFile" class="custom-file-input" (change)="inputChange($event.target.files)" />
     <label for="inputFile" class="custom-file-label">Escolha a foto do Produto</label>
 
   </div>

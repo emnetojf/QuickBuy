@@ -31,11 +31,15 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Compile Remove="ClientApp\src\assets\NovaPasta\**" />
+    <Compile Remove="wwwroot\NovaPasta\**" />
     <Content Remove="$(SpaRoot)**" />
     <Content Remove="ClientApp\src\assets\NovaPasta\**" />
+    <Content Remove="wwwroot\NovaPasta\**" />
     <EmbeddedResource Remove="ClientApp\src\assets\NovaPasta\**" />
+    <EmbeddedResource Remove="wwwroot\NovaPasta\**" />
     <None Remove="$(SpaRoot)**" />
     <None Remove="ClientApp\src\assets\NovaPasta\**" />
+    <None Remove="wwwroot\NovaPasta\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -71,6 +75,10 @@
     <Content Update="config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\arquivos\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

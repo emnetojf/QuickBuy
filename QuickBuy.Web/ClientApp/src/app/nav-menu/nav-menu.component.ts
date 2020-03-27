@@ -26,14 +26,15 @@ export class NavMenuComponent {
     return this.usuarioServico.usuario_autenticado();
   }
 
+ 
   sair() {
     this.usuarioServico.limpar_sessao();
     this.router.navigate(['/'])
   }
 
   get usuarioNome() {
-    var usuario = this.usuarioServico.usuario.strNome;
-    return usuario;
+
+    return this.usuarioServico.usuario.strEmail;
   }
 
 }

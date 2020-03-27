@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using QuickBuy.Dominio.Contratos;
 using QuickBuy.Dominio.Entidades;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,10 +17,16 @@ namespace QuickBuy.Web.Controllers
     public class ProdutoController : Controller
     {
         private readonly IProdutoRepositorio _produtoRepositorio;
+        private IHttpContextAccessor _httpContextAccessor;
+        private IHostingEnvironment _hostingEnvironment;
 
-        public ProdutoController(IProdutoRepositorio produtoRepositorio)
+        public ProdutoController(IProdutoRepositorio produtoRepositorio, 
+                                 IHttpContextAccessor httpContextAccessor,
+                                 IHostingEnvironment hostingEnvironment)
         {
             _produtoRepositorio = produtoRepositorio;
+            _httpContextAccessor = httpContextAccessor;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         [HttpGet]
@@ -48,7 +57,38 @@ namespace QuickBuy.Web.Controllers
             }
         }
 
+        [HttpPost("enviarArq")]
+        public IActionResult enviarArq()
+        {
+            try
+            {
+                var formFile = _httpContextAccessor.HttpContext.Request.Form.Files["arqEnviado"];
+                var nomeArq = formFile.FileName;
+                var extArq = nomeArq.Split(".").Last();
+                string novoNomeArq = GerarNovoNomeArq(nomeArq, extArq);
 
+                var pastaArq = _hostingEnvironment.WebRootPath + "\\arquivos\\";
+                var nomeCompleto = pastaArq + novoNomeArq;
 
+                using (var streamArquivo = new FileStream(nomeCompleto, FileMode.Create))
+                {
+                    formFile.CopyTo(streamArquivo);
+                }
+
+                return Json(novoNomeArq);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+        private static string GerarNovoNomeArq(string nomeArq, string extArq)
+        {
+            var nomeCompacto = Path.GetFileNameWithoutExtension(nomeArq).Take(10).ToArray();
+            var novoNomeArq = new string(nomeCompacto).Replace(" ", "-") + "." + extArq;
+            novoNomeArq = $"{novoNomeArq}_{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}-{DateTime.Now.Hour}{DateTime.Now.Minute}{DateTime.Now.Second}.{extArq}";
+            return novoNomeArq;
+        }
     }
 }
