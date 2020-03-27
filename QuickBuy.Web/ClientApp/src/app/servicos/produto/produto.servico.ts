@@ -27,16 +27,16 @@ export class ProdutoServico implements OnInit {
   }
 
   public cadastrarProduto(produto: Produto): Observable<Produto> {
-    return this.http.post<Produto>(this.baseURL + "api/produto/cadastrar", JSON.stringify(Produto), { headers: this.headers });
+    return this.http.post<Produto>(this.baseURL + "api/produto/cadastrar", JSON.stringify(produto), { headers: this.headers });
   }
 
 
   public salvarProduto(produto: Produto): Observable<Produto> {
-    return this.http.post<Produto>(this.baseURL + "api/produto/salvar", JSON.stringify(Produto), { headers: this.headers });  
+    return this.http.post<Produto>(this.baseURL + "api/produto/salvar", JSON.stringify(produto), { headers: this.headers });  
   }
 
   public deletarProduto(produto: Produto): Observable<Produto> {
-    return this.http.post<Produto>(this.baseURL + "api/produto/deletar", JSON.stringify(Produto), { headers: this.headers });  
+    return this.http.post<Produto>(this.baseURL + "api/produto/deletar", JSON.stringify(produto), { headers: this.headers });  
   }
 
   public obterProdutos(): Observable<Produto[]> {

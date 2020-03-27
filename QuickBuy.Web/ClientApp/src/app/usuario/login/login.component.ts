@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
    
   public usuario;
   public returnUrl: string;
-  public mesgErro: string;
+  public msgErro: string;
   public ativar_spinner: boolean;
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute, private usuarioServico: UsuarioServico) {
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       },
       err => {
         console.log(err.error);
-        this.mesgErro = err.error;
+        this.msgErro = err.error;
         this.ativar_spinner = false;
       }
     );

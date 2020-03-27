@@ -76,16 +76,19 @@
       </div>
     </div>
 
-    <div class="alert alert-danger" *ngIf="mesgErro">
-      {{mesgErro}}
-    </div>
-
     <button class="btn btn-primary btn-block mb-3" type="submit" (click)=cadastrar() [disabled]="ativar_spinner">
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
       Cadastrar
     </button>
 
     <div><a [routerLink]='["/entrar"]'>Voltar</a></div>
+
+    <div class="alert alert-danger" *ngIf="msgErro">
+      {{msgErro}}
+    </div>
+    <div class="alert alert-success" *ngIf="usuarioCadastrado">
+      Usuário cadastrado com sucesso! <a class="alert-link" [routerLink]='["/entrar"]'>Logar no sistema?</a>
+    </div>
 
   </form>
 </div>
