@@ -5,7 +5,7 @@
         public int IdProd { get; set; }
         public string strNome { get; set; }
         public string strDescricao { get; set; }
-        public decimal decPreco { get; set; }
+        public double douPreco { get; set; }
         public string strNomeArq { get; set; }
 
         public override void Validate()
@@ -18,8 +18,8 @@
             if (string.IsNullOrEmpty(strDescricao))
                 AdicMsg("Informe a Descrição!");
 
-            if (decPreco == 0)
-                AdicMsg("Informe o Preço!");
+            //if (douPreco == 0)
+            //    AdicMsg("Informe o Preço!");
         }
     }
 }

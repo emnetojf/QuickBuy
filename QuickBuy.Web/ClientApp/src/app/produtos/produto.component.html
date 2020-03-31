@@ -1,14 +1,14 @@
-<h1 class="h4" titulo >Cadastro do Produto</h1>
+<h1 class="h4" titulo>Cadastro do Produto</h1>
 
-<!--{
-              'is-invalid': nome.invalid && (nome.dirty || nome.touched),
-              'is-valid': nome.valid && (nome.dirty || nome.touched)
-           }-->
+
 <!-- nome -->
 <label for="inputNome" class="sr-only">Nome</label>
 <input type="text" name="nomeProduto" id="inputNome" placeholder="Informe o nome do produto"
        class="mb-2 col-md-4 form-control"
-       [ngClass]=""
+       [ngClass]="{
+              'is-invalid': nome.invalid && (nome.dirty || nome.touched),
+              'is-valid': nome.valid && (nome.dirty || nome.touched)
+           }"
        [(ngModel)]="produto.strNome"
        #nome="ngModel"
        required />
@@ -23,9 +23,12 @@
 <label for="inputDescricao" class="sr-only">Descrição</label>
 <input type="text" name="descricaoProduto" id="inputDescricao" placeholder="Informe a descrição do produto"
        class="mb-2 col-md-4 form-control"
-       [ngClass]=""
-       [(ngModel)] = "produto.strDescricao"
-       #descricao = "ngModel"
+       [ngClass]="{
+              'is-invalid': descricao.invalid && (descricao.dirty || descricao.touched),
+              'is-valid': descricao.valid && (descricao.dirty || descricao.touched)
+           }"
+       [(ngModel)]="produto.strDescricao"
+       #descricao="ngModel"
        required />
 <div class="invalid-feedback mb-2" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)" role="alert">
   <div *ngIf="descricao.errors.required">
@@ -36,10 +39,13 @@
 
 <!-- preço -->
 <label for="inputPreco" class="sr-only">Preço do Produto</label>
-<input type="text" name="precoProduto" id="inputPreco" placeholder="Informe o preço do produto"
+<input type="number" name="precoProduto" id="inputPreco" placeholder="Informe o preço do produto"
        class="mb-2 col-md-4 form-control"
-       [ngClass]=""
-       [(ngModel)]="produto.decPreco"
+       [ngClass]="{
+              'is-invalid': preco.invalid && (preco.dirty || preco.touched),
+              'is-valid': preco.valid && (preco.dirty || preco.touched)
+           }"
+       [(ngModel)]="produto.douPreco"
        #preco="ngModel"
        required />
 <div class="invalid-feedback mb-2" *ngIf="preco.invalid && (preco.dirty || preco.touched)" role="alert">
@@ -65,3 +71,10 @@
 </button>
 
 <div><a [routerLink]='["/"]'>Voltar</a></div>
+
+<div class="alert alert-danger col-md-4" *ngIf="msgErro">
+  {{msgErro}}
+</div>
+<div class="alert alert-success col-md-4" *ngIf="produtoCadastrado">
+  Produto cadastrado com sucesso! <a class="alert-link" [routerLink]='["/entrar"]'></a>
+</div>

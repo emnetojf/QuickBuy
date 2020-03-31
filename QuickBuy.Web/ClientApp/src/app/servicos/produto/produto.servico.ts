@@ -14,6 +14,7 @@ export class ProdutoServico implements OnInit {
     
   private baseURL: string;
   public produtos: Produto[];
+  private prodConvert: Produto; 
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.baseURL = baseUrl;
@@ -21,6 +22,7 @@ export class ProdutoServico implements OnInit {
 
   ngOnInit(): void {
     this.produtos = [];
+    this.prodConvert = new Produto();
   }
 
   get headers(): HttpHeaders {
@@ -32,13 +34,12 @@ export class ProdutoServico implements OnInit {
     formData.append("arqEnviado", arqSelecionado, arqSelecionado.name);
 
     return this.http.post<string>(this.baseURL + "api/produto/enviarArq", formData);
+  } 
+
+
+  public cadastrarProduto(produto: Produto): Observable<Produto> {   
+    return this.http.post<Produto>(this.baseURL + "api/produto/", JSON.stringify(produto), { headers: this.headers });
   }
-
-
-  public cadastrarProduto(produto: Produto): Observable<Produto> {
-    return this.http.post<Produto>(this.baseURL + "api/produto/cadastrar", JSON.stringify(produto), { headers: this.headers });
-  }
-
 
   public salvarProduto(produto: Produto): Observable<Produto> {
     return this.http.post<Produto>(this.baseURL + "api/produto/salvar", JSON.stringify(produto), { headers: this.headers });  

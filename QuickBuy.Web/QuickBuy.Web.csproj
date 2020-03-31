@@ -44,6 +44,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\arquivos\celular_re.jfif_27-3-2020-154131.jfif" />
+    <Content Remove="wwwroot\arquivos\celular_re.jfif_27-3-2020-232055.jfif" />
+    <Content Remove="wwwroot\arquivos\QuickBuy.jfif_27-3-2020-232327.jfif" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="ClientApp\src\app\autenticacao\rotas.ts" />
     <None Remove="ClientApp\src\app\home\home.component.css" />
     <None Remove="ClientApp\src\app\modelo\produto.ts" />

@@ -14,7 +14,7 @@ namespace QuickBuy.Repositorio.Config
             // Builder utiliza padrão fluent
             builder.Property(prod => prod.strDescricao).IsRequired().HasMaxLength(400);
             builder.Property(prod => prod.strNome).IsRequired().HasMaxLength(50);
-            builder.Property(prod => prod.decPreco).IsRequired();          
+            builder.Property(prod => prod.douPreco).IsRequired().HasColumnType("float");          
         }
     }
 }

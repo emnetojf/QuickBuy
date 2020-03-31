@@ -12,8 +12,13 @@ namespace QuickBuy.Dominio.Entidades
         protected void AdicMsg(string msg) { msgValidacao.Add(msg); }
         protected void LimpaMsgValidacao() { msgValidacao.Clear(); }
         
+        public string ObterMsgValidacao()
+        {
+            return string.Join(" - ", msgValidacao);
+        }
+
         public abstract void Validate();
 
-        protected bool Validado { get { return !msgValidacao.Any();  } }
+        public bool Validado { get { return !msgValidacao.Any();  } }
     }
 }
