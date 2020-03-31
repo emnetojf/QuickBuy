@@ -47,6 +47,7 @@
            }"
        [(ngModel)]="produto.douPreco"
        #preco="ngModel"
+       money-mask
        required />
 <div class="invalid-feedback mb-2" *ngIf="preco.invalid && (preco.dirty || preco.touched)" role="alert">
   <div *ngIf="preco.errors.required">
@@ -65,16 +66,21 @@
   </div>
 </div>
 
-<button class="btn btn-primary btn-block mb-3 col-md-1" type="submit" (click)=cadastrar() [disabled]="ativar_spinner">
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
-  Cadastrar
-</button>
 
-<div><a [routerLink]='["/"]'>Voltar</a></div>
+<div class="form-inline">
+  <button class="btn btn-primary col-md-1" style="margin-right:4px" type="submit" (click)=cadastrar() [disabled]="ativar_spinner">
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+    Cadastrar
+  </button>
+
+  <button class="btn btn-danger col-md-1" (click)="cancelarProduto()" >Cancelar</button>
+</div>
+
+<!--[routerLink]='["/pesquisa-produto"]'-->
 
 <div class="alert alert-danger col-md-4" *ngIf="msgErro">
   {{msgErro}}
 </div>
 <div class="alert alert-success col-md-4" *ngIf="produtoCadastrado">
-  Produto cadastrado com sucesso! <a class="alert-link" [routerLink]='["/entrar"]'></a>
+  Produto cadastrado com sucesso!
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { Produto } from "../modelo/produto";
 import { ProdutoServico } from "../servicos/produto/produto.servico";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "cadastro-produto",
@@ -16,13 +17,21 @@ export class ProdutoComponent implements OnInit {
   public msgErro: string;
   public produtoCadastrado: boolean;
 
-  constructor(private produtoServico: ProdutoServico) {
+  constructor(private produtoServico: ProdutoServico, private router: Router) {
 
   }
 
   
   ngOnInit(): void {
-    this.produto = new Produto();
+    var produtoSession = sessionStorage.getItem('produtoSession')
+    if (produtoSession)
+    {
+      this.produto = JSON.parse(produtoSession);
+    }
+    else
+    {
+      this.produto = new Produto();
+    }
   }
 
   public cadastrar() {
@@ -33,6 +42,8 @@ export class ProdutoComponent implements OnInit {
         this.produtoCadastrado = true;
         this.msgErro = "";
         this.ativar_spinner = false;
+        sessionStorage.setItem('produtoSession', "");
+        this.router.navigate(['pesquisa-produto'])
       },
       err => {
         console.log(err.error);
@@ -41,6 +52,13 @@ export class ProdutoComponent implements OnInit {
       }
     );
   }
+
+  public cancelarProduto() {
+    sessionStorage.setItem('produtoSession', "");
+    this.router.navigate(['/pesquisa-produto']);
+  }
+
+
 
   public inputChange(files: FileList) {
     this.arqSelecionado = files.item(0);

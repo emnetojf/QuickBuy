@@ -13,6 +13,7 @@ import { rotas } from './autenticacao/rotas';
 import { UsuarioServico } from './servicos/usuario/usuario.servico';
 import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.component';
 import { ProdutoServico } from './servicos/produto/produto.servico';
+import { PesquisaProdutoComponent } from './produtos/pesquisa/pesquisa.produto.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProdutoServico } from './servicos/produto/produto.servico';
     ProdutoComponent,
     LoginComponent,
     CadastroUsuarioComponent,
+    PesquisaProdutoComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,9 +31,10 @@ import { ProdutoServico } from './servicos/produto/produto.servico';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'produto', component: ProdutoComponent, canActivate: [rotas] }, 
+      { path: 'produto', component: ProdutoComponent }, 
       { path: 'entrar', component: LoginComponent },
       { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
+      { path: 'pesquisa-produto', component: PesquisaProdutoComponent, canActivate: [rotas] },
     ])
   ],
   providers: [UsuarioServico, ProdutoServico],
