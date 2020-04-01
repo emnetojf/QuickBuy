@@ -53,6 +53,7 @@
     <None Remove="ClientApp\src\app\autenticacao\rotas.ts" />
     <None Remove="ClientApp\src\app\home\home.component.css" />
     <None Remove="ClientApp\src\app\loja\pesquisa\pesquisa.loja.component.ts" />
+    <None Remove="ClientApp\src\app\loja\produto\produto.loja.component.ts" />
     <None Remove="ClientApp\src\app\modelo\produto.ts" />
     <None Remove="ClientApp\src\app\modelo\usuario.ts" />
     <None Remove="ClientApp\src\app\produtos\pesquisa\pesquisa.produto.component.ts" />
@@ -71,6 +72,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\autenticacao\rotas.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\pesquisa\pesquisa.loja.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\loja\produto\produto.loja.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modelo\produto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modelo\usuario.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\produtos\pesquisa\pesquisa.produto.component.ts" />
