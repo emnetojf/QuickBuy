@@ -14,6 +14,8 @@ import { UsuarioServico } from './servicos/usuario/usuario.servico';
 import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.component';
 import { ProdutoServico } from './servicos/produto/produto.servico';
 import { PesquisaProdutoComponent } from './produtos/pesquisa/pesquisa.produto.component';
+import { LojaPesquisaComponent } from './loja/pesquisa/pesquisa.loja.component';
+import { TruncateModule } from 'ng2-truncate'
 
 @NgModule({
   declarations: [
@@ -24,11 +26,13 @@ import { PesquisaProdutoComponent } from './produtos/pesquisa/pesquisa.produto.c
     LoginComponent,
     CadastroUsuarioComponent,
     PesquisaProdutoComponent,
+    LojaPesquisaComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    TruncateModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'produto', component: ProdutoComponent }, 
