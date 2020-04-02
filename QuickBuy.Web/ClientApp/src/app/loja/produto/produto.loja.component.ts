@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ProdutoServico } from "../../servicos/produto/produto.servico";
 import { Produto } from "../../modelo/produto";
+import { Router } from "@angular/router";
+import { CarrinhoLoja } from "../carrinho/carrinho.loja";
 
 @Component({
   selector: "produto-loja",
@@ -11,19 +13,14 @@ import { Produto } from "../../modelo/produto";
 export class LojaProdutoComponent implements OnInit {
 
   public produto: Produto;
+  public carrinhoCompras: CarrinhoLoja;
 
-  constructor(private produtoServico: ProdutoServico) {
-    //this.produtoServico.obterProdutos().subscribe(
-    //  produtos => {
-    //    this.produtos = produtos;
-    //  },
-    //  e => {
-    //    console.log(e.error);
-    //  }
-    //);
+  constructor(private produtoServico: ProdutoServico, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.carrinhoCompras = new CarrinhoLoja();
+
     var produtoDetalhe = sessionStorage.getItem("produtoDetalhe");
 
     if (produtoDetalhe) {
@@ -31,5 +28,9 @@ export class LojaProdutoComponent implements OnInit {
     }
   }
 
+  public comprar() {
+    this.carrinhoCompras.adiconarProduto(this.produto);
+    this.router.navigate(['/efetivar-loja']);
+  }
 }
 

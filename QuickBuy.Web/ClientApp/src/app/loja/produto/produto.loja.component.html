@@ -7,7 +7,7 @@
       <div class="row mb-4" style="color:#666;"> <h1 class="h4">{{produto.strDescricao}}</h1> </div>
       <div class="row mb-4"> <h1 class="h2">{{produto.douPreco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}}</h1> </div>
       <div class="row mb-4">
-        <button class="btn btn-danger btn-lg" >Comprar</button>
+        <button class="btn btn-danger btn-lg" (click)="comprar()">Comprar</button>
       </div>
     </div>
   </div>

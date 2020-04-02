@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { TruncateModule } from 'ng2-truncate'
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -15,8 +16,8 @@ import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.co
 import { ProdutoServico } from './servicos/produto/produto.servico';
 import { PesquisaProdutoComponent } from './produtos/pesquisa/pesquisa.produto.component';
 import { LojaPesquisaComponent } from './loja/pesquisa/pesquisa.loja.component';
-import { TruncateModule } from 'ng2-truncate'
 import { LojaProdutoComponent } from './loja/produto/produto.loja.component';
+import { LojaEfetivarComponent } from './loja/efetivar/efetivar.loja.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LojaProdutoComponent } from './loja/produto/produto.loja.component';
     PesquisaProdutoComponent,
     LojaPesquisaComponent,
     LojaProdutoComponent,
+    LojaEfetivarComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,6 +44,7 @@ import { LojaProdutoComponent } from './loja/produto/produto.loja.component';
       { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
       { path: 'pesquisa-produto', component: PesquisaProdutoComponent, canActivate: [rotas] },
       { path: 'produto-loja', component: LojaProdutoComponent },
+      { path: 'efetivar-loja', component: LojaEfetivarComponent },
     ])
   ],
   providers: [UsuarioServico, ProdutoServico],
