@@ -4,4 +4,6 @@ export class Produto {
   strDescricao: string;
   douPreco: number;
   strNomeArq: string;
+  douPrecoOrig: number;
+  numQuant: number;
 }

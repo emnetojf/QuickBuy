@@ -18,8 +18,8 @@
             if (string.IsNullOrEmpty(strDescricao))
                 AdicMsg("Informe a Descrição!");
 
-            //if (douPreco == 0)
-            //    AdicMsg("Informe o Preço!");
+            if (douPreco == 0)
+                AdicMsg("Informe o Preço!");
         }
     }
 }

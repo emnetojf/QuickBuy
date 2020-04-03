@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var CarrinhoLoja = /** @class */ (function () {
     function CarrinhoLoja() {
         this.produtos = [];
+        this.produtosAux = [];
     }
     CarrinhoLoja.prototype.adiconarProduto = function (produto) {
         var produtolocalStorage = localStorage.getItem("produtolocalStorage");
@@ -21,6 +22,15 @@ var CarrinhoLoja = /** @class */ (function () {
         }
     };
     CarrinhoLoja.prototype.removerProduto = function (produto) {
+        var produtolocalStorage = localStorage.getItem("produtolocalStorage");
+        if (produtolocalStorage) {
+            this.produtos = JSON.parse(produtolocalStorage);
+            this.produtos = this.produtos.filter(function (prod) { return prod.strNome != produto.strNome; });
+            localStorage.setItem("produtolocalStorage", JSON.stringify(this.produtos));
+        }
+    };
+    CarrinhoLoja.prototype.atualizarProduto = function (produtos) {
+        localStorage.setItem("produtolocalStorage", JSON.stringify(produtos));
     };
     return CarrinhoLoja;
 }());
