@@ -20,6 +20,7 @@ var CarrinhoLoja = /** @class */ (function () {
         if (produtolocalStorage) {
             return JSON.parse(produtolocalStorage);
         }
+        return this.produtos;
     };
     CarrinhoLoja.prototype.removerProduto = function (produto) {
         var produtolocalStorage = localStorage.getItem("produtolocalStorage");
@@ -31,6 +32,10 @@ var CarrinhoLoja = /** @class */ (function () {
     };
     CarrinhoLoja.prototype.atualizarProduto = function (produtos) {
         localStorage.setItem("produtolocalStorage", JSON.stringify(produtos));
+    };
+    CarrinhoLoja.prototype.itensCarrinhoCompras = function () {
+        var itens = this.obterProdutos();
+        return (itens.length > 0);
     };
     return CarrinhoLoja;
 }());

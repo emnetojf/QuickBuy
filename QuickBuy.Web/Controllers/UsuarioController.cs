@@ -60,7 +60,7 @@ namespace QuickBuy.Web.Controllers
 
                 if (usuarioRetorno != null)
                 {
-                    return Ok(usuario);
+                    return Ok(usuarioRetorno);
                 }
 
                 return BadRequest("Usuário ou senha inválido");

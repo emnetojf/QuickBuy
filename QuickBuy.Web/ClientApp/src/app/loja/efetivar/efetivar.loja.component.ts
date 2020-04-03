@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ProdutoServico } from "../../servicos/produto/produto.servico";
 import { Produto } from "../../modelo/produto";
 import { CarrinhoLoja } from "../carrinho/carrinho.loja";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "efetivar-loja",
@@ -15,7 +16,7 @@ export class LojaEfetivarComponent implements OnInit {
   public produtos: Produto[];
   public Total: number;
 
-  constructor(private produtoServico: ProdutoServico) {    
+  constructor(private produtoServico: ProdutoServico, private router: Router) {    
   }
 
   ngOnInit(): void {
@@ -44,10 +45,19 @@ export class LojaEfetivarComponent implements OnInit {
     this.carrinhoCompras.removerProduto(produto)
     this.produtos = this.carrinhoCompras.obterProdutos();
     this.atualizaTotalPreco();
+
+    if (this.produtos.length <= 0) {
+      this.router.navigate(['/'])
+    }
+
   }
 
   public atualizaTotalPreco() {
     // Método reduce varre o array de objetos
     this.Total = this.produtos.reduce((acc, produto) => acc + produto.douPreco, 0); 
+  }
+
+  public efetivarCompra() {
+
   }
 }

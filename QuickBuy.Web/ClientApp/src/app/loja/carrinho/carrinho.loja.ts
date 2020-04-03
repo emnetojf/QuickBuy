@@ -1,4 +1,5 @@
 import { Produto } from "../../modelo/produto";
+import { UsuarioServico } from "../../servicos/usuario/usuario.servico";
 
 export class CarrinhoLoja {
   public produtos: Produto[] = [];
@@ -26,6 +27,8 @@ export class CarrinhoLoja {
       return JSON.parse(produtolocalStorage);
     }    
 
+    return this.produtos;
+
   }
 
   public removerProduto(produto: Produto) {
@@ -44,4 +47,10 @@ export class CarrinhoLoja {
     localStorage.setItem("produtolocalStorage", JSON.stringify(produtos));
   }
 
+  public itensCarrinhoCompras(): boolean {
+    var itens = this.obterProdutos();
+
+    return (itens.length > 0); 
+    
+  }
 }

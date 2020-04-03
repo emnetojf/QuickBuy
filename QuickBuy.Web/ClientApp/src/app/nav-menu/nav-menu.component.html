@@ -19,7 +19,7 @@
               [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="usuarioAdmin()">
             <a class="nav-link text-dark" [routerLink]="['/pesquisa-produto']">Produtos</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!usuarioLogado()">
@@ -34,8 +34,14 @@
                data-toggle="dropdown"> {{usuarioNome}} </a>
 
             <ul class="dropdown-menu" aria-labelledby="linkMenu">
-              <li class="dropdown-item" role="menu" [routerLink]="['/sair']" (click)="sair()" >Sair</li>             
+              <li class="dropdown-item" role="menu" [routerLink]="['/sair']" (click)="sair()">Sair</li>
             </ul>
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="itensCarrinhoCompras()">
+            <a class="nav-link text-dark" [routerLink]="['/efetivar-loja']">
+              <img src="assets/img/shopping.png" style="width:30px; height:32px;" />
+            </a>
           </li>
 
         </ul>

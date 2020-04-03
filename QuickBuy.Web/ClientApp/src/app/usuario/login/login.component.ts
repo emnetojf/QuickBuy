@@ -30,11 +30,7 @@ export class LoginComponent implements OnInit {
     this.ativar_spinner = true;
 
     this.usuarioServico.verificarUsuario(this.usuario).subscribe(
-      //data => {
-        //var usuarioRetorno: Usuario;
-        //usuarioRetorno = data;
-        //sessionStorage.setItem("usuario-autenticado", "1");
-        //sessionStorage.setItem("email-usuario", usuarioRetorno.strEmail);
+     
       usuario_json => {
         this.usuarioServico.usuario = usuario_json;
 
