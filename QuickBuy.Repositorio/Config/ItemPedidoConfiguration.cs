@@ -13,7 +13,7 @@ namespace QuickBuy.Repositorio.Config
 
             // Builder utiliza padrão fluent
             builder.Property(itens => itens.ProdId).IsRequired();
-            builder.Property(itens => itens.intQuant).IsRequired();
+            builder.Property(itens => itens.numQuant).IsRequired();
         }
     }
 }

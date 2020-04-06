@@ -25,6 +25,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
   </ItemGroup>
 
@@ -53,14 +54,19 @@
     <None Remove="ClientApp\src\app\autenticacao\rotas.ts" />
     <None Remove="ClientApp\src\app\home\home.component.css" />
     <None Remove="ClientApp\src\app\loja\carrinho\carrinho.loja.ts" />
+    <None Remove="ClientApp\src\app\loja\efetivar\compra.realizada.loja.component.html" />
+    <None Remove="ClientApp\src\app\loja\efetivar\compra.realizada.loja.component.ts" />
     <None Remove="ClientApp\src\app\loja\efetivar\efetivar.loja.component.ts" />
     <None Remove="ClientApp\src\app\loja\pesquisa\pesquisa.loja.component.ts" />
     <None Remove="ClientApp\src\app\loja\produto\produto.loja.component.ts" />
+    <None Remove="ClientApp\src\app\modelo\itempedido.ts" />
+    <None Remove="ClientApp\src\app\modelo\pedido.ts" />
     <None Remove="ClientApp\src\app\modelo\produto.ts" />
     <None Remove="ClientApp\src\app\modelo\usuario.ts" />
     <None Remove="ClientApp\src\app\produtos\pesquisa\pesquisa.produto.component.ts" />
     <None Remove="ClientApp\src\app\produtos\produto.component.ts" />
     <None Remove="ClientApp\src\app\produtos\produto.component1.html" />
+    <None Remove="ClientApp\src\app\servicos\pedido\pedido.servico.ts" />
     <None Remove="ClientApp\src\app\servicos\produto\produto.servico.ts" />
     <None Remove="ClientApp\src\app\servicos\usuario\usuario.servico.ts" />
     <None Remove="ClientApp\src\app\usuario\cadastro\cadastro.usuario.component.ts" />
@@ -74,13 +80,20 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\autenticacao\rotas.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\carrinho\carrinho.loja.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\loja\efetivar\compra.realizada.loja.component.html">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\loja\efetivar\compra.realizada.loja.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\efetivar\efetivar.loja.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\pesquisa\pesquisa.loja.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\produto\produto.loja.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modelo\itempedido.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modelo\pedido.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modelo\produto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modelo\usuario.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\produtos\pesquisa\pesquisa.produto.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\produtos\produto.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\servicos\pedido\pedido.servico.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\servicos\produto\produto.servico.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\servicos\usuario\usuario.servico.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\usuario\cadastro\cadastro.usuario.component.ts" />

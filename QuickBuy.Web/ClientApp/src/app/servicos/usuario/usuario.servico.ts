@@ -12,6 +12,7 @@ export class UsuarioServico {
 
   private baseURL: string;
   private _usuario: Usuario;
+  
 
   get usuario(): Usuario {
     let usuario_json = sessionStorage.getItem("usuario-autenticado");

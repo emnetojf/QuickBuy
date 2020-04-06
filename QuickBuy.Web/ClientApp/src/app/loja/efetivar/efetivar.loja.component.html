@@ -34,7 +34,7 @@
         <div class="card-header">Resumo</div>
         <div class="card-body">
           <h5 class="card-title">Total Compra:</h5>
-          <p class="card-text"> R$ {{Total | number:'1.0-2'}}</p>
+          <p class="card-text"> R$ {{Total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}}</p>
           <button class="btn btn-success card-text" (click)="efetivarCompra()">Efetivar Compra</button>
         </div>
       </div>

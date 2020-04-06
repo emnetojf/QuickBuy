@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { TruncateModule } from 'ng2-truncate'
+import { TruncateModule } from 'ng2-truncate';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -18,6 +18,8 @@ import { PesquisaProdutoComponent } from './produtos/pesquisa/pesquisa.produto.c
 import { LojaPesquisaComponent } from './loja/pesquisa/pesquisa.loja.component';
 import { LojaProdutoComponent } from './loja/produto/produto.loja.component';
 import { LojaEfetivarComponent } from './loja/efetivar/efetivar.loja.component';
+import { PedidoServico } from './servicos/pedido/pedido.servico';
+import { LojaCompraRealizadaComponent } from './loja/efetivar/compra.realizada.loja.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { LojaEfetivarComponent } from './loja/efetivar/efetivar.loja.component';
     PesquisaProdutoComponent,
     LojaPesquisaComponent,
     LojaProdutoComponent,
-    LojaEfetivarComponent,
+    LojaEfetivarComponent, 
+    LojaCompraRealizadaComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,10 +47,11 @@ import { LojaEfetivarComponent } from './loja/efetivar/efetivar.loja.component';
       { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
       { path: 'pesquisa-produto', component: PesquisaProdutoComponent, canActivate: [rotas] },
       { path: 'produto-loja', component: LojaProdutoComponent },
-      { path: 'efetivar-loja', component: LojaEfetivarComponent, canActivate: [rotas]  },
+      { path: 'efetivar-loja', component: LojaEfetivarComponent, canActivate: [rotas] },
+      { path: 'compra-realizada', component: LojaCompraRealizadaComponent },      
     ])
   ],
-  providers: [UsuarioServico, ProdutoServico],
+  providers: [UsuarioServico, ProdutoServico, PedidoServico],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

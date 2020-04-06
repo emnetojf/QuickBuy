@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace QuickBuy.Web.Controllers
 {
-    [ApiController]    
+      
     [Route("api/[controller]")]
     
     public class ProdutoController : Controller

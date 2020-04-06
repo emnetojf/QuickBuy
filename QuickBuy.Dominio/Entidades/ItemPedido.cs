@@ -4,7 +4,7 @@
     {
         public int IdItemPed { get; set; }
         public int ProdId { get; set; }
-        public int intQuant { get; set; }
+        public int numQuant { get; set; }
 
         public override void Validate()
         {
@@ -13,7 +13,7 @@
             if (ProdId == 0)
                 AdicMsg("Informe o produto!");
 
-            if (intQuant == 0)
+            if (numQuant == 0)
                 AdicMsg("Informe a quantidade do produto!");
         }
     }

@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Usuario } from "../../modelo/usuario";
 import { Router, ActivatedRoute } from "@angular/router";
 import { UsuarioServico } from "../../servicos/usuario/usuario.servico";
-import { error } from "protractor";
+
 
 @Component({
   selector: "app-login",
@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
 
         if (this.returnUrl == null) {
           this.router.navigate(['/']);
-        } else {
+        }
+        else {
           this.router.navigate([this.returnUrl]);
         }
         

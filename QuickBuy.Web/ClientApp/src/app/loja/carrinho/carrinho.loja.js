@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var CarrinhoLoja = /** @class */ (function () {
     function CarrinhoLoja() {
         this.produtos = [];
-        this.produtosAux = [];
     }
     CarrinhoLoja.prototype.adiconarProduto = function (produto) {
         var produtolocalStorage = localStorage.getItem("produtolocalStorage");
@@ -36,6 +35,9 @@ var CarrinhoLoja = /** @class */ (function () {
     CarrinhoLoja.prototype.itensCarrinhoCompras = function () {
         var itens = this.obterProdutos();
         return (itens.length > 0);
+    };
+    CarrinhoLoja.prototype.limparCarrinhoCompras = function () {
+        localStorage.setItem("produtolocalStorage", "");
     };
     return CarrinhoLoja;
 }());
