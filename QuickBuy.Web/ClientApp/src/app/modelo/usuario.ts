@@ -1,5 +1,5 @@
 export class Usuario {
-  IdUsr: number;
+  idUsr: number;
   strEmail: string;
   strSenha: string;
   strNome: string;

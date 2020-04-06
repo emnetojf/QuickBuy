@@ -2,7 +2,7 @@
 {
     public class Produto : Entidade
     {
-        public int IdProd { get; set; }
+        public int idProd { get; set; }
         public string strNome { get; set; }
         public string strDescricao { get; set; }
         public double douPreco { get; set; }

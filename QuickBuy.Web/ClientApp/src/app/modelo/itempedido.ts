@@ -1,5 +1,5 @@
 export class ItemPedido {
-  IdItemPed: number;
+  idItemPed: number;
   ProdId: number;
   numQuant: number;
 }

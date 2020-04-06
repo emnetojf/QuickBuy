@@ -2,7 +2,7 @@
 {
     public class ItemPedido : Entidade
     {
-        public int IdItemPed { get; set; }
+        public int idItemPed { get; set; }
         public int ProdId { get; set; }
         public int numQuant { get; set; }
 

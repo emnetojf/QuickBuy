@@ -1,5 +1,5 @@
 export class Produto {
-  IdProd: number;
+  idProd: number;
   strNome: string;
   strDescricao: string;
   douPreco: number;

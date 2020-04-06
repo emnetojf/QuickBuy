@@ -8,7 +8,7 @@ namespace QuickBuy.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-            builder.HasKey(usr => usr.IdUsr);
+            builder.HasKey(usr => usr.idUsr);
 
             // Builder utiliza padrão fluent
             builder.Property(usr => usr.strEmail).IsRequired().HasMaxLength(50);

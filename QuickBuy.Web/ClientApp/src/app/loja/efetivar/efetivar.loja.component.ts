@@ -88,7 +88,7 @@ export class LojaEfetivarComponent implements OnInit {
   public criarPedido(): Pedido {
     let pedido = new Pedido();
 
-    pedido.UsuarioID = 1 // this.usuario.IdUsr;
+    pedido.UsuarioID = this.usuario.idUsr;
     pedido.dtEntrega = new Date();
     pedido.PagtoID = 1;
     pedido.strCEP = "36016-010";
@@ -99,7 +99,7 @@ export class LojaEfetivarComponent implements OnInit {
 
     for (let prod of this.produtos) {
       let itemPedido = new ItemPedido();
-      itemPedido.ProdId = 1 //prod.IdProd;
+      itemPedido.ProdId = prod.idProd;
 
       if (!prod.numQuant)
         prod.numQuant = 1;

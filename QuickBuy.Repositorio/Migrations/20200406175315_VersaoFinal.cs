@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuickBuy.Repositorio.Migrations
 {
-    public partial class PrimeiraVersao : Migration
+    public partial class VersaoFinal : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,38 +26,40 @@ namespace QuickBuy.Repositorio.Migrations
                 name: "Produtos",
                 columns: table => new
                 {
-                    IdProd = table.Column<int>(nullable: false)
+                    idProd = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     strNome = table.Column<string>(maxLength: 50, nullable: false),
                     strDescricao = table.Column<string>(maxLength: 400, nullable: false),
-                    decPreco = table.Column<decimal>(nullable: false)
+                    douPreco = table.Column<float>(type: "float", nullable: false),
+                    strNomeArq = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Produtos", x => x.IdProd);
+                    table.PrimaryKey("PK_Produtos", x => x.idProd);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
                 {
-                    IdUsr = table.Column<int>(nullable: false)
+                    idUsr = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     strEmail = table.Column<string>(maxLength: 50, nullable: false),
                     strSenha = table.Column<string>(maxLength: 400, nullable: false),
                     strNome = table.Column<string>(maxLength: 50, nullable: false),
-                    strSobrenome = table.Column<string>(maxLength: 50, nullable: false)
+                    strSobrenome = table.Column<string>(maxLength: 50, nullable: false),
+                    booAdministrador = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuarios", x => x.IdUsr);
+                    table.PrimaryKey("PK_Usuarios", x => x.idUsr);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Pedidos",
                 columns: table => new
                 {
-                    IdPed = table.Column<int>(nullable: false)
+                    idPed = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     UsuarioID = table.Column<int>(nullable: false),
                     dtPedido = table.Column<DateTime>(nullable: false),
@@ -71,7 +73,7 @@ namespace QuickBuy.Repositorio.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pedidos", x => x.IdPed);
+                    table.PrimaryKey("PK_Pedidos", x => x.idPed);
                     table.ForeignKey(
                         name: "FK_Pedidos_FormaPagtos_PagtoID",
                         column: x => x.PagtoID,
@@ -82,7 +84,7 @@ namespace QuickBuy.Repositorio.Migrations
                         name: "FK_Pedidos_Usuarios_UsuarioID",
                         column: x => x.UsuarioID,
                         principalTable: "Usuarios",
-                        principalColumn: "IdUsr",
+                        principalColumn: "idUsr",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -90,27 +92,42 @@ namespace QuickBuy.Repositorio.Migrations
                 name: "ItensPedido",
                 columns: table => new
                 {
-                    IdItemPed = table.Column<int>(nullable: false)
+                    idItemPed = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ProdId = table.Column<int>(nullable: false),
-                    intQuant = table.Column<int>(nullable: false),
-                    PedidoIdPed = table.Column<int>(nullable: true)
+                    numQuant = table.Column<int>(nullable: false),
+                    PedidoidPed = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ItensPedido", x => x.IdItemPed);
+                    table.PrimaryKey("PK_ItensPedido", x => x.idItemPed);
                     table.ForeignKey(
-                        name: "FK_ItensPedido_Pedidos_PedidoIdPed",
-                        column: x => x.PedidoIdPed,
+                        name: "FK_ItensPedido_Pedidos_PedidoidPed",
+                        column: x => x.PedidoidPed,
                         principalTable: "Pedidos",
-                        principalColumn: "IdPed",
+                        principalColumn: "idPed",
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "FormaPagtos",
+                columns: new[] { "IdPagto", "strDescricao", "strNome" },
+                values: new object[] { 1, "Forma de Pagamento Boleto", "Boleto" });
+
+            migrationBuilder.InsertData(
+                table: "FormaPagtos",
+                columns: new[] { "IdPagto", "strDescricao", "strNome" },
+                values: new object[] { 2, "Forma de Pagamento Cartão Credito", "Cartao Credito" });
+
+            migrationBuilder.InsertData(
+                table: "FormaPagtos",
+                columns: new[] { "IdPagto", "strDescricao", "strNome" },
+                values: new object[] { 3, "Forma de Pagamento Depósito", "Depósito" });
+
             migrationBuilder.CreateIndex(
-                name: "IX_ItensPedido_PedidoIdPed",
+                name: "IX_ItensPedido_PedidoidPed",
                 table: "ItensPedido",
-                column: "PedidoIdPed");
+                column: "PedidoidPed");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pedidos_PagtoID",

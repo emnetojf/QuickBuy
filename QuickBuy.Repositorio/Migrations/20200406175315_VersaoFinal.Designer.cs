@@ -9,8 +9,8 @@ using QuickBuy.Repositorio.Contexto;
 namespace QuickBuy.Repositorio.Migrations
 {
     [DbContext(typeof(QuickBuyContexto))]
-    [Migration("20200406153438_AlteracaoCampo-numQuant")]
-    partial class AlteracaoCamponumQuant
+    [Migration("20200406175315_VersaoFinal")]
+    partial class VersaoFinal
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,11 +21,11 @@ namespace QuickBuy.Repositorio.Migrations
 
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.ItemPedido", b =>
                 {
-                    b.Property<int>("IdItemPed")
+                    b.Property<int>("idItemPed")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("PedidoIdPed")
+                    b.Property<int?>("PedidoidPed")
                         .HasColumnType("int");
 
                     b.Property<int>("ProdId")
@@ -34,16 +34,16 @@ namespace QuickBuy.Repositorio.Migrations
                     b.Property<int>("numQuant")
                         .HasColumnType("int");
 
-                    b.HasKey("IdItemPed");
+                    b.HasKey("idItemPed");
 
-                    b.HasIndex("PedidoIdPed");
+                    b.HasIndex("PedidoidPed");
 
                     b.ToTable("ItensPedido");
                 });
 
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.Pedido", b =>
                 {
-                    b.Property<int>("IdPed")
+                    b.Property<int>("idPed")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -82,7 +82,7 @@ namespace QuickBuy.Repositorio.Migrations
                         .HasColumnType("varchar(5) CHARACTER SET utf8mb4")
                         .HasMaxLength(5);
 
-                    b.HasKey("IdPed");
+                    b.HasKey("idPed");
 
                     b.HasIndex("PagtoID");
 
@@ -93,7 +93,7 @@ namespace QuickBuy.Repositorio.Migrations
 
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.Produto", b =>
                 {
-                    b.Property<int>("IdProd")
+                    b.Property<int>("idProd")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -113,14 +113,14 @@ namespace QuickBuy.Repositorio.Migrations
                     b.Property<string>("strNomeArq")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("IdProd");
+                    b.HasKey("idProd");
 
                     b.ToTable("Produtos");
                 });
 
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.Usuario", b =>
                 {
-                    b.Property<int>("IdUsr")
+                    b.Property<int>("idUsr")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -147,7 +147,7 @@ namespace QuickBuy.Repositorio.Migrations
                         .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
-                    b.HasKey("IdUsr");
+                    b.HasKey("idUsr");
 
                     b.ToTable("Usuarios");
                 });
@@ -197,7 +197,7 @@ namespace QuickBuy.Repositorio.Migrations
                 {
                     b.HasOne("QuickBuy.Dominio.Entidades.Pedido", null)
                         .WithMany("ItemPedidos")
-                        .HasForeignKey("PedidoIdPed");
+                        .HasForeignKey("PedidoidPed");
                 });
 
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.Pedido", b =>

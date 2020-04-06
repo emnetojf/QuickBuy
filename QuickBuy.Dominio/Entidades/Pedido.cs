@@ -7,7 +7,7 @@ namespace QuickBuy.Dominio.Entidades
 {
     public class Pedido : Entidade
     {
-        public int IdPed { get; set; }
+        public int idPed { get; set; }
         
         public int UsuarioID { get; set; }
         public virtual Usuario Usuario { get; set; }

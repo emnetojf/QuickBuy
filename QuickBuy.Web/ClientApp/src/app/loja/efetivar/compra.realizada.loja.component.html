@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-md-6">
       <div class="row mb-4" style="color:#666;"> <h1 class="h4">Compra realizada com sucesso!</h1> </div>
-      <div class="row mb-4"> <h1 class="h2">Pedido: {{pedido.IdPed}}</h1> </div>
-      <div class="row mb-4"> <p>Data Pedido: {{pedido.dtPedido.toLocaleString("pt-BR")}}</p> </div>      
+      <div class="row mb-4"> <h1 class="h2">Pedido: {{pedido.idPed}}</h1> </div>
+      <div class="row mb-4"> <p>Data Pedido: {{pedido.dtPedido.toLocaleString("pt-BR", { dateStyle: "short", timeStyle:"short" })}}</p> </div>      
     </div>
   </div>
 </div>

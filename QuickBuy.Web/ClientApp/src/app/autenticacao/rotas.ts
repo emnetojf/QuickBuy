@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
-//import { ProdutoComponent } from "../produtos/produto.component";
 import { UsuarioServico } from "../servicos/usuario/usuario.servico";
 
 

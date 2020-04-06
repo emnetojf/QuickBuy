@@ -55,7 +55,7 @@ namespace QuickBuy.Web.Controllers
                     return BadRequest(produto.ObterMsgValidacao());
                 }
 
-                if (produto.IdProd > 0)
+                if (produto.idProd > 0)
                 {
                     _produtoRepositorio.Atualizar(produto);
                 }

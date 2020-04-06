@@ -8,10 +8,10 @@ import { Pedido } from "../../modelo/pedido";
 
 export class LojaCompraRealizadaComponent implements OnInit {
 
-  public pedido: Pedido;   
-
+  public pedido: Pedido;
+  
   ngOnInit(): void {
-    this.pedido = JSON.parse(sessionStorage.getItem("pedido"));  
+    this.pedido = JSON.parse(sessionStorage.getItem("pedido"));    
   }  
 
 

@@ -9,7 +9,7 @@ namespace QuickBuy.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
-            builder.HasKey(prod => prod.IdProd);
+            builder.HasKey(prod => prod.idProd);
 
             // Builder utiliza padrão fluent
             builder.Property(prod => prod.strDescricao).IsRequired().HasMaxLength(400);

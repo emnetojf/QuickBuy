@@ -1,7 +1,7 @@
 import { ItemPedido } from "./itempedido";
 
 export class Pedido {
-  IdPed: number;
+  idPed: number;
   UsuarioID: number;
   dtPedido: Date;
   dtEntrega: Date;

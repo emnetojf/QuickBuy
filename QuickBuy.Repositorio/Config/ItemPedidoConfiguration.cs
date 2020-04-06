@@ -9,7 +9,7 @@ namespace QuickBuy.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<ItemPedido> builder)
         {
-            builder.HasKey(itens => itens.IdItemPed);
+            builder.HasKey(itens => itens.idItemPed);
 
             // Builder utiliza padrão fluent
             builder.Property(itens => itens.ProdId).IsRequired();
