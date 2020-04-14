@@ -18,15 +18,15 @@ namespace QuickBuy.Web.Controllers
     {
         private readonly IProdutoRepositorio _produtoRepositorio;
         private IHttpContextAccessor _httpContextAccessor;
-        private IHostingEnvironment _hostingEnvironment;
+        private IWebHostEnvironment _webHostEnvironment;
 
         public ProdutoController(IProdutoRepositorio produtoRepositorio, 
                                  IHttpContextAccessor httpContextAccessor,
-                                 IHostingEnvironment hostingEnvironment)
+                                 IWebHostEnvironment webHostEnvironment)
         {
             _produtoRepositorio = produtoRepositorio;
             _httpContextAccessor = httpContextAccessor;
-            _hostingEnvironment = hostingEnvironment;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
@@ -100,7 +100,7 @@ namespace QuickBuy.Web.Controllers
                 var extArq = nomeArq.Split(".").Last();
                 string novoNomeArq = GerarNovoNomeArq(nomeArq, extArq);
 
-                var pastaArq = _hostingEnvironment.WebRootPath + "\\arquivos\\";
+                var pastaArq = _webHostEnvironment.WebRootPath + "\\arquivos\\";
                 var nomeCompleto = pastaArq + novoNomeArq;
 
                 using (var streamArquivo = new FileStream(nomeCompleto, FileMode.Create))

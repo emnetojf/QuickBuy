@@ -14,15 +14,15 @@ namespace QuickBuy.Web.Controllers
         
         private readonly IPedidoRepositorio _pedidoRepositorio;
         private IHttpContextAccessor _httpContextAccessor;
-        private IHostingEnvironment _hostingEnvironment;
+        private IWebHostEnvironment _webHostEnvironment;
 
         public PedidoController(IPedidoRepositorio pedidoRepositorio,
                                 IHttpContextAccessor httpContextAccessor,
-                                IHostingEnvironment hostingEnvironment)
+                                IWebHostEnvironment webHostEnvironment)
         {
             _pedidoRepositorio  = pedidoRepositorio;
             _httpContextAccessor = httpContextAccessor;
-            _hostingEnvironment = hostingEnvironment;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
